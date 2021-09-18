@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <!--dviceのヘルパーメソッド-->
+    <% if user_signed_in? %>
+      <!--ログイン済みなら[ログアウト]表示-->
+      <li>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </li>
+    <% else %>
+      <!--未ログインなら[新規投稿・ログイン]表示-->
+      <li>
+        <%= link_to "新規登録", new_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "ログイン", new_user_session_path %>
+      </li>
+    <% end %>
     <%= yield %>
   </body>
 </html>
