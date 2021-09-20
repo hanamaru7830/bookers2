@@ -6,12 +6,11 @@
   </div>
   <label for="inputImage">Image</label>
   <div>
-    <%= attachment_image_tag @user, :profile_image %>
     <%= f.attachment_field :profile_image %>
   </div>
- 
+
   <h4>Introduction</h4>
-  <%= f.text_area :body %>
+  <%= f.text_area :introduction %>
   <div class="actions">
     <%= f.submit 'Update User' %>
   </div>

@@ -10,10 +10,12 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
+    @user = current_user #ユーザー情報を表示したいページに定義
   end
 
   def show
     @book = Book.find(params[:id])
+    @user = current_user
   end
 
   def edit
