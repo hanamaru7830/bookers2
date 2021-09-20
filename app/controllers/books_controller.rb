@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   #投稿データを保存する
   def create
     @book = Book.new(book_params)

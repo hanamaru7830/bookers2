@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  
   #前に :アクションを実行 :デバイスの機能利用
   before_action :configure_permitted_parameters, if: :devise_controller?
 
