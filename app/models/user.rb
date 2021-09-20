@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
-  has_many :book, dependent: :destroy
   
-  attachment :image
+  #複数の投稿が1人のユーザーから
+  has_many :books, dependent: :destroy
+  
+   attachment :profile_image
 end
