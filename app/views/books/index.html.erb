@@ -1,15 +1,16 @@
 <%= render 'books/userinfo', book: @book, user: @user %>
 
-
-
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this obj from being saved:
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 
 <h1>Books</h1>
 <% @books.each do |book| %>
-
 <div>
   <%= link_to book_path(book.id) do %>
-
-
   <p><%= book.title %></p>
   <p><%= book.body %></p>
   <% end %>
