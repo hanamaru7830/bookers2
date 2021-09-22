@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   def after_inactive_sign_up_path_for(resource) #新規登録
-    flash[:notice] = "successfully"
+    flash[:notice] = "Welcome! You have signed up successfully"
     user_path(@user)                
   end
 
   def after_sign_in_path_for(resource) #ログイン
-    flash[:notice] = "successfully"
+    flash[:notice] = "Signed in successfully"
     user_path(@user) #ログイン後ログインユーザーのshowページ
   end
   
