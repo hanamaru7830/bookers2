@@ -1,7 +1,6 @@
 <%= render 'books/userinfo', book: @book, user: @user %>
 
 <h1>Users</h1>
-
 <% @users.each do |user| %>
 <div>
   <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>

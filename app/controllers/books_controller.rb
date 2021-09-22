@@ -17,7 +17,9 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
+    @users = User.all
     @user = current_user #ユーザー情報を表示したいページに定義
+    
   end
 
   def show
