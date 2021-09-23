@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_book,only: [:edit]
   #投稿データを保存する
   def create
     @book = Book.new(book_params)
@@ -19,13 +20,13 @@ class BooksController < ApplicationController
     @books = Book.all
     @users = User.all
     @user = current_user #ユーザー情報を表示したいページに定義
-    
   end
 
   def show
     @book_form = Book.new
     @book = Book.find(params[:id])
-    @user = current_user
+    #@user = User.where(id: @book.user_id)
+    @user = @book.user
   end
 
   def edit
@@ -48,6 +49,12 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def correct_book
+        @book = Book.find(params[:id])
+    unless @book.user.id == current_user.id
+      redirect_to books_path
+    end
+  end
   private
   def book_params
     params.require(:book).permit(:title, :body)
