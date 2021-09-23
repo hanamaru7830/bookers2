@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource) #ログイン
     flash[:notice] = "Signed in successfully"
-    user_path(resource.id) #ログイン後ログインユーザーのshowページ
+    user_path(current_user) #ログイン後ログインユーザーのshowページ
   end
 
   def after_sign_out_path_for(resource) #ログアウト
